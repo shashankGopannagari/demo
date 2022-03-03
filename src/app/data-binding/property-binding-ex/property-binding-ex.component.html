@@ -1,0 +1,60 @@
+
+<main class="container"> 
+    <p class="bsClass" [id]="paraId" [title]="pataTitle" style="border: 2px dotted red;"   >property-binding-ex works!</p>    
+
+<input type="text" name="name" id="id" value="Angular Demo" class="form-control">
+
+<!-- this is example of Attribute binding -->
+<table class= "mt-4 border color mt-3 one two three">
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+    </tr>
+
+    <tr>
+        <td >John</td>
+        <td [attr.colspan]="colValue">John@gmail.com</td>
+    </tr>
+
+</table>
+
+<!-- single class binding -->
+<div [class.highlight]="isClassApplied">
+    your will rock.
+</div>
+
+
+<!-- single class binding -->
+<div [class]="dynamicClass">
+    your will rock.
+</div>
+
+<hr>
+<h3>conditional class</h3>
+<div [ngClass]="isClassApplied ? 'highlight' : 'single'">
+    your will rock.
+</div>
+<hr>
+<h3>get class from method</h3>
+<div [ngClass]="getClass()" >
+   ANgualr Demo
+</div>
+<hr>
+
+
+<h3>style binding </h3>
+<div [style]="styleBinding" >
+   ANgualr Demo
+</div>
+<hr>
+
+
+<h3>conditional style binding </h3>
+<div [style]="isClassApplied ? 'border: 3px solid red' : 'border: 4px dotted purple'" >
+   ANgualr Demo
+</div>
+<hr>
+
+</main>
+
