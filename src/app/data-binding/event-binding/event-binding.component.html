@@ -1,0 +1,6 @@
+<h2>event-binding </h2>
+
+<input type="text" name="name" id="id" (focus)="onFocus(msg.value)" (blur)="onBlur(msg.value)" 
+(click)="passData(msg.value)"  #msg />
+
+<div (click)="click()"  (mouseover)="onMouseOver()"  (mouseout)="onMouseOut()" class="bg bg-light"> click me !</div>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { PropertyBindingExComponent } from './data-binding/property-binding-ex/property-binding-ex.component';
+import { EventBindingComponent } from './data-binding/event-binding/event-binding.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PropertyBindingExComponent } from './data-binding/property-binding-ex/p
     AppComponent,
     HelloWorldComponent,
     DataBindingComponent,
-    PropertyBindingExComponent
+    PropertyBindingExComponent,
+    EventBindingComponent
   ],
   imports: [
     BrowserModule,
