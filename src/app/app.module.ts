@@ -7,6 +7,9 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { PropertyBindingExComponent } from './data-binding/property-binding-ex/property-binding-ex.component';
 import { EventBindingComponent } from './data-binding/event-binding/event-binding.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { IfComponent } from './directives/if/if.component';
+import { NgForComponent } from './directives/ng-for/ng-for.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { EventBindingComponent } from './data-binding/event-binding/event-bindin
     HelloWorldComponent,
     DataBindingComponent,
     PropertyBindingExComponent,
-    EventBindingComponent
+    EventBindingComponent,
+    HighlightDirective,
+    IfComponent,
+    NgForComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<h3>ng-for Examples!</h3>
+
+<ul>
+    <li *ngFor="let topic of topics; index as i; first as f; last as l; odd as o; even as e">
+        <p [ngClass]=" e ? 'bg bg-info': 'bg bg-ligt'"> {{topic}} </p>
+    </li>
+</ul>
+
+
+<table [class]="'table table-hover table-responsive'">
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; even as e; odd as o" [ngClass]="{'bg bg-warning': e, 'bg bg-info': o}" >
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        </tr>
+    </tbody>
+
+
+</table>

@@ -1,0 +1,43 @@
+
+
+<main [class]="'container'">
+    <p *ngIf="isLoggedIn || isSuccess"> sample msg</p>
+    <p *ngIf="isLoggedIn && isSuccess"> sample Msg</p>
+    
+    <div *ngIf="isSuccess; else Failure" [class]="'alert alert-success'"> Success Msg</div>
+    
+    <ng-template #Failure>
+     <div class="alert alert-danger">
+      Failure Msg
+     </div>
+    
+    </ng-template>
+<!-- 
+    
+   <div *ngIf="!isSuccess">Failure</div>
+   <div *ngIf="isSuccess">Success</div> -->
+
+   
+   <h4>NgIf then else </h4>
+   <hr>
+   
+   
+   <section *ngIf="isSuccess; then success; else failure"></section>
+
+  <ng-template #success>
+    <div class="alert alert-danger">
+        Success Msg
+       </div>
+  </ng-template>
+
+  <ng-template #failure>
+    <div class="alert alert-danger">
+    Failure Msg
+   </div>
+  </ng-template>
+
+
+</main>
+
+
+
