@@ -10,6 +10,8 @@ import { EventBindingComponent } from './data-binding/event-binding/event-bindin
 import { HighlightDirective } from './directives/highlight.directive';
 import { IfComponent } from './directives/if/if.component';
 import { NgForComponent } from './directives/ng-for/ng-for.component';
+import { PipesComponent } from './pipes/pipes/pipes.component';
+import { ExamplePipe } from './pipes/example.pipe';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { NgForComponent } from './directives/ng-for/ng-for.component';
     EventBindingComponent,
     HighlightDirective,
     IfComponent,
-    NgForComponent
+    NgForComponent,
+    PipesComponent,
+    ExamplePipe
   ],
   imports: [
     BrowserModule,
