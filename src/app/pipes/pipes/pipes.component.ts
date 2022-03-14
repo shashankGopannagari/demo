@@ -9,7 +9,7 @@ export class PipesComponent implements OnInit {
 
   
   text = "Angular Training";
-
+  searchTerm = '';
   number = 3.56;
   user = {
     'firstName' : 'John',
@@ -30,18 +30,18 @@ export class PipesComponent implements OnInit {
     'email': 'james.bond@gmail.com'
   },
   {
-    'firstName' : 'James',
-    'lastName': 'Bond',
+    'firstName' : 'Jack',
+    'lastName': 'Reach',
     'email': 'james.bond@gmail.com'
   },
   {
-    'firstName' : 'James',
-    'lastName': 'Bond',
+    'firstName' : 'Nelson',
+    'lastName': 'Ream',
     'email': 'james.bond@gmail.com'
   },
   {
-    'firstName' : 'James',
-    'lastName': 'Bond',
+    'firstName' : 'David',
+    'lastName': 'Warner',
     'email': 'james.bond@gmail.com'
   }
 ]

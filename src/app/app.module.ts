@@ -12,6 +12,8 @@ import { IfComponent } from './directives/if/if.component';
 import { NgForComponent } from './directives/ng-for/ng-for.component';
 import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
+import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,11 +27,13 @@ import { ExamplePipe } from './pipes/example.pipe';
     IfComponent,
     NgForComponent,
     PipesComponent,
-    ExamplePipe
+    ExamplePipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
