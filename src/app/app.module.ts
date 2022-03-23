@@ -14,6 +14,9 @@ import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
 import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { FormsModule } from '@angular/forms';
     PipesComponent,
     ExamplePipe,
     FilterPipe,
+    HomeComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

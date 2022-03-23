@@ -16,7 +16,17 @@
 <p> {{user.date | date: 'longDate' }} </p>
 
 -->
-<ul>
+
+
+Parent Info
+<hr>
+<p>{{parentInfo}}  </p>
+  <!-- <p>{{title}}</p> -->
+
+  <button (click)="sendData()">send data</button>
+
+
+<ul class="mt-5">
     <li *ngFor="let user of users | slice: 1: 3">
         {{user.firstName}}
     </li>
@@ -40,13 +50,16 @@ placeholder="Type to search..." [(ngModel)]="searchTerm">
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users | filter: searchTerm; index as i">
+      <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
         <th scope="row">{{i + 1}}</th>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>
       </tr>
     </tbody>
+
+    
+
   </table>
 
 
