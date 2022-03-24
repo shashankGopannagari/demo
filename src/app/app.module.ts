@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, myComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
@@ -14,10 +14,6 @@ import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
 import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-
 
 @NgModule({
   declarations: [
@@ -32,9 +28,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     PipesComponent,
     ExamplePipe,
     FilterPipe,
-    HomeComponent,
-    AboutUsComponent,
-    ContactUsComponent,
+    myComponents,
   ],
   imports: [
     BrowserModule,

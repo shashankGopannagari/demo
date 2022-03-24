@@ -1,0 +1,27 @@
+
+<h3>Users</h3>
+
+<!-- <label for="exampleDataList" class="form-label">Datalist example</label> -->
+<input class="form-control" list="datalistOptions" id="exampleDataList" 
+placeholder="Type to search..." [(ngModel)]="searchTerm">
+
+
+<table class="table caption-top">
+    <caption>List of users</caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
+        <!-- <th scope="row"><a routerLink="/user-details/{{user.id}}">{{user.id}}</a></th> -->
+        <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
