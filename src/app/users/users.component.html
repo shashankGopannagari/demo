@@ -18,8 +18,9 @@ placeholder="Type to search..." [(ngModel)]="searchTerm">
     </thead>
     <tbody>
       <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
-        <!-- <th scope="row"><a routerLink="/user-details/{{user.id}}">{{user.id}}</a></th> -->
-        <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th>
+        <th scope="row"><a [routerLink]="['/user-details', user.id]" 
+          [queryParams]="{name: user.firstName, email: user.email}">{{user.id}}</a></th>
+        <!-- <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th> -->
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>

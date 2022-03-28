@@ -4,6 +4,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LaptopComponent } from './products/laptop/laptop.component';
+import { MobileComponent } from './products/mobile/mobile.component';
+import { ProductsComponent } from './products/products.component';
+import { TvComponent } from './products/tv/tv.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
 
@@ -30,8 +34,16 @@ const routes: Routes = [
     component: UsersComponent
   },
   {
-    path: 'userDetails/:id',
+    path: 'user-details/:id',
     component: UserDetailsComponent
+  },
+  {
+    path: 'products',  component: ProductsComponent, children: [
+      // {path: '', },
+      {path: 'tv', component: TvComponent},
+      {path: 'laptop', component: LaptopComponent},
+      {path: 'mobile', component: MobileComponent}
+    ]
   },
   {
     path: '**',
@@ -51,5 +63,10 @@ export const myComponents = [
   ContactUsComponent,
   PageNotFoundComponent,
   UsersComponent,
-  UserDetailsComponent
+  UserDetailsComponent,
+  ProductsComponent,
+  TvComponent,
+  LaptopComponent,
+  MobileComponent,
+
 ]

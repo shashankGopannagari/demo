@@ -14,6 +14,7 @@ import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
 import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,16 @@ import { FormsModule } from '@angular/forms';
     ExamplePipe,
     FilterPipe,
     myComponents,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    // {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
