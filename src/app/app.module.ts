@@ -30,7 +30,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ExamplePipe,
     FilterPipe,
     myComponents,
-   
   ],
   imports: [
     BrowserModule,

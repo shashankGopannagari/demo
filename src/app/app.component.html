@@ -28,7 +28,12 @@
               </li>
               <li class="nav-item">
                 <!-- <a class="nav-link disabled">About us</a> -->
-                <a class="nav-link"  [routerLinkActive]="'myActive'"  [routerLink]="'/aboutus'">About us</a>
+                <a class="nav-link"  [routerLinkActive]="'myActive'"  [routerLink]="['/aboutus', {
+                  outlets: {
+                    'map': ['location'],
+                    'feedback': ['feedback']
+                  }
+                }]">About us</a>
               </li>
             </ul>
           </div>
@@ -37,7 +42,7 @@
 </header>
 
 <main >
-        <router-outlet></router-outlet>
+        <router-outlet ></router-outlet>
 <!-- <app-data-binding></app-data-binding> -->
 
 <!-- <app-property-binding-ex></app-property-binding-ex> -->
