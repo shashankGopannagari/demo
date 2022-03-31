@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FeedbackComponent } from './about-us/feedback/feedback.component';
 import { LocationComponent } from './about-us/location/location.component';
+import { AuthChildGuard } from './auth-child.guard';
+import { AuthenticateGuard } from './authenticate.guard';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -35,14 +37,17 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [AuthenticateGuard]
   },
   {
     path: 'user-details/:id',
     component: UserDetailsComponent
   },
   {
-    path: 'products',  component: ProductsComponent, children: [
+    path: 'products',  component: ProductsComponent, 
+    canActivateChild: [AuthChildGuard],
+    children: [
       // {path: '', },
       {path: 'tv', component: TvComponent},
       {path: 'laptop', component: LaptopComponent},

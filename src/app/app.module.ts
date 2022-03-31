@@ -15,6 +15,8 @@ import { ExamplePipe } from './pipes/example.pipe';
 import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AuthenticateGuard } from './authenticate.guard';
+import { AuthChildGuard } from './auth-child.guard';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule
   ],
   providers: [
+    
     // {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
