@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthenticateGuard } from './authenticate.guard';
 import { AuthChildGuard } from './auth-child.guard';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import { AuthChildGuard } from './auth-child.guard';
     NgForComponent,
     PipesComponent,
     ExamplePipe,
-    FilterPipe,
+    // FilterPipe,
     myComponents,
+    AccessDeniedComponent,
   ],
   imports: [
     BrowserModule,

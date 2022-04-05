@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthenticateGuard implements CanActivate {
 
-constructor(router: Router){}
+constructor(private router: Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -15,10 +15,10 @@ constructor(router: Router){}
       console.log('in CanActivate Guard');
     let access = false;
   if(access){
-    return true;
+    return access;
   }
-  // return window.confirm('User does not have access');
-   return false;
+  return this.router.navigate(['/denied'], {skipLocationChange: true})
+  // return false;
 
 }
 

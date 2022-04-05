@@ -50,7 +50,7 @@ placeholder="Type to search..." [(ngModel)]="searchTerm">
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
+      <tr *ngFor="let user of users index as i">
         <th scope="row">{{i + 1}}</th>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>

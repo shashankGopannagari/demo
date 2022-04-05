@@ -28,12 +28,12 @@ export class UserDetailsComponent implements OnInit {
   }
   gotoPreviousPage(){
     this.userId = this.userId - 1;
-     this.router.navigate(['/user-details', this.userId])
+     this.router.navigate(['/users/user-details', this.userId])
   }
 
   gotoNextPage(){
     this.userId = this.userId + 1;
-    this.router.navigate(['/user-details', this.userId])
+    this.router.navigate(['/users/user-details', this.userId])
   }
 
 }

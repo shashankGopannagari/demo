@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FeedbackComponent } from './about-us/feedback/feedback.component';
 import { LocationComponent } from './about-us/location/location.component';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { AuthChildGuard } from './auth-child.guard';
 import { AuthenticateGuard } from './authenticate.guard';
+import { CanLoadAuthGuard } from './can-load-auth.guard';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -12,8 +14,6 @@ import { LaptopComponent } from './products/laptop/laptop.component';
 import { MobileComponent } from './products/mobile/mobile.component';
 import { ProductsComponent } from './products/products.component';
 import { TvComponent } from './products/tv/tv.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   
@@ -33,17 +33,10 @@ const routes: Routes = [
   },
   {
     path: 'contactus',
+    canActivate: [AuthenticateGuard],
     component: ContactUsComponent
   },
-  {
-    path: 'users',
-    component: UsersComponent,
-    canActivate: [AuthenticateGuard]
-  },
-  {
-    path: 'user-details/:id',
-    component: UserDetailsComponent
-  },
+  
   {
     path: 'products',  component: ProductsComponent, 
     canActivateChild: [AuthChildGuard],
@@ -51,9 +44,19 @@ const routes: Routes = [
       // {path: '', },
       {path: 'tv', component: TvComponent},
       {path: 'laptop', component: LaptopComponent},
-      {path: 'mobile', component: MobileComponent}
+      {path: 'mobile', component: MobileComponent},
     ]
   },
+  {
+    path: 'denied',
+    component: AccessDeniedComponent
+  },
+  
+  { path: 'users', 
+  canLoad: [CanLoadAuthGuard],
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule) 
+  },
+  
   {
     path: '**',
     component: PageNotFoundComponent
@@ -71,8 +74,6 @@ export const myComponents = [
   AboutUsComponent,
   ContactUsComponent,
   PageNotFoundComponent,
-  UsersComponent,
-  UserDetailsComponent,
   ProductsComponent,
   TvComponent,
   LaptopComponent,
