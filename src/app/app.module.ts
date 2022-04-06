@@ -18,6 +18,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthenticateGuard } from './authenticate.guard';
 import { AuthChildGuard } from './auth-child.guard';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [

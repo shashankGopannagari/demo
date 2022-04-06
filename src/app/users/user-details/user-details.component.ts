@@ -36,4 +36,6 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['/users/user-details', this.userId])
   }
 
+
+ 
 }
