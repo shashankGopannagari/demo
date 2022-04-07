@@ -12,13 +12,10 @@ import { IfComponent } from './directives/if/if.component';
 import { NgForComponent } from './directives/ng-for/ng-for.component';
 import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
-import { FilterPipe } from './pipes/custom-pipes/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AuthenticateGuard } from './authenticate.guard';
-import { AuthChildGuard } from './auth-child.guard';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
-import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +36,8 @@ import { UserService } from './services/user.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     

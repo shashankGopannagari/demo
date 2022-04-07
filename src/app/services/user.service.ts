@@ -1,58 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
 
-  set users1(firstName: string) {
+  baseURL = 'http://localhost:3000/';
+  // baseURL = "https://jsonplaceholder.typicode.com/";
+  constructor(private http: HttpClient) { }
 
+  isUserAdmin() {
+    return true;
   }
 
- isUserAdmin(){
-   return true;
- }
-
-  get users() {
+  get users() : Observable<User[]> {
     console.log('from service');
-    let users = [
-      {
-        'id': 1,
-        'firstName': 'John',
-        'lastName': 'Doe',
-        'email': 'john.doe@gmail.com'
-      },
-      {
-        'id': 2,
-        'firstName': 'James',
-        'lastName': 'Bond',
-        'email': 'james.bond@gmail.com'
-      },
-      {
-        'id': 3,
-        'firstName': 'Jack',
-        'lastName': 'Reach',
-        'email': 'james.bond@gmail.com'
-      },
-      {
-        'id': 4,
-        'firstName': 'Nelson',
-        'lastName': 'Ream',
-        'email': 'james.bond@gmail.com'
-      },
-      {
-        'id': 5,
-        'firstName': 'David',
-        'lastName': 'Warner',
-        'email': 'james.bond@gmail.com'
-      }
-    ];
-
-    return users;
-
-  }
+    // const url = '../assets/jsons/users.json';
+    return this.http.get<User[]>(`${this.baseURL}users`);
+ }
 
 
 
