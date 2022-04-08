@@ -3,11 +3,12 @@
 <p>we are seeing User details of </p>
 
 <ul>
-    <li>{{userId}}</li>
-    <li>{{userName}}</li>
-    <li>{{email}}</li>
+    <li>{{userDetails?.id}}</li>
+    <li>{{userDetails?.name}}</li>
+    <li>{{userDetails?.username}}</li>
+    <li>{{userDetails?.email}}</li>
 </ul>
 
 
-<button (click)="gotoNextPage()">Next</button>
-<button (click)="gotoPreviousPage()">Previous</button>
+<!-- <button (click)="gotoNextPage()">Next</button>
+<button (click)="gotoPreviousPage()">Previous</button> -->

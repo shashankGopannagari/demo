@@ -6,7 +6,7 @@
 placeholder="Type to search..." [(ngModel)]="searchTerm">
 
 
-<table class="table caption-top">
+<table class="table caption-top" *ngIf="users.length > 0;">
     <caption>List of users</caption>
     <thead class="table-dark">
       <tr>
@@ -18,8 +18,12 @@ placeholder="Type to search..." [(ngModel)]="searchTerm">
     </thead>
     <tbody>
       <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
-        <th scope="row"><a [routerLink]="['/users/user-details', user.id]" 
-          [queryParams]="{name: user.name, email: user.email}">{{user.id}}</a></th>
+        <!-- <th scope="row"><a [routerLink]="['/users/user-details', user.id]" 
+          [queryParams]="{name: user.name, email: user.email}">{{user.id}}</a>
+        </th> -->
+        <th scope="row">
+          <a [routerLink]="['/users/user-details', user.id]" >{{user.id}}</a>
+        </th>
         <!-- <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th> -->
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
@@ -27,3 +31,13 @@ placeholder="Type to search..." [(ngModel)]="searchTerm">
       </tr>
     </tbody>
 </table>
+
+<div class="alert alert-danger" *ngIf="users.length === 0">
+  {{errMsg}}
+</div>
+
+<!-- <ng-template #noUsers>
+  <div class="alert alert-danger">
+  sssss  {{'errorMsg'}}
+  </div>
+</ng-template> -->

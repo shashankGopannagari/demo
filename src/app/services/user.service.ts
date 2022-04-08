@@ -1,16 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-
-  baseURL = 'http://localhost:3000/';
-  // baseURL = "https://jsonplaceholder.typicode.com/";
+  
+  baseURL = environment.baseURL;
   constructor(private http: HttpClient) { }
 
   isUserAdmin() {
@@ -19,9 +18,24 @@ export class UserService {
 
   get users() : Observable<User[]> {
     console.log('from service');
-    // const url = '../assets/jsons/users.json';
-    return this.http.get<User[]>(`${this.baseURL}users`);
+    return this.http.get<User[]>(`${this.baseURL}users`).pipe(catchError(this.errorHandler));
  }
+
+ getUser(userId: number): Observable<User>{
+   return this.http.get<User>(`${this.baseURL}users/${userId}`).pipe(catchError(this.errorHandler));
+ }
+
+
+ createUser(user: User) : Observable<User>{
+   return this.http.post<User>(`${this.baseURL}users`, user);
+ }
+
+ 
+
+ errorHandler(error: HttpErrorResponse)  {
+   console.log('error===>', error)
+  return throwError(error.message || 'unknown error ')
+}
 
 
 
