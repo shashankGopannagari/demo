@@ -1,43 +1,56 @@
+<main>
 
-<h3>Users</h3>
+  <h3>Users</h3>
 
-<!-- <label for="exampleDataList" class="form-label">Datalist example</label> -->
-<input class="form-control" list="datalistOptions" id="exampleDataList" 
-placeholder="Type to search..." [(ngModel)]="searchTerm">
+  <section class="loader" *ngIf="showLoader">
+    <div class="d-flex align-items-center justify-content-center" style="height: 99vh;">
+      <!-- <strong>Loading...</strong> -->
+      <div class="spinner-border" role="status" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section *ngIf="!showLoader">
+
+    <ng-container *ngIf="users?.length > 0; else noUsers">
+      <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."
+        [(ngModel)]="searchTerm">
 
 
-<table class="table caption-top" *ngIf="users.length > 0;">
-    <caption>List of users</caption>
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">User Name</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
-        <!-- <th scope="row"><a [routerLink]="['/users/user-details', user.id]" 
+      <table class="table caption-top">
+        <!-- <caption>List of users</caption> -->
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users | filter: searchTerm : 'firstName'; index as i">
+            <!-- <th scope="row"><a [routerLink]="['/users/user-details', user.id]" 
           [queryParams]="{name: user.name, email: user.email}">{{user.id}}</a>
         </th> -->
-        <th scope="row">
-          <a [routerLink]="['/users/user-details', user.id]" >{{user.id}}</a>
-        </th>
-        <!-- <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th> -->
-        <td>{{user.name}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-      </tr>
-    </tbody>
-</table>
+            <th scope="row">
+              <a [routerLink]="['/users/user-details', user.id]">{{user.id}}</a>
+            </th>
+            <!-- <th scope="row"><a (click)="goToUserDetails(user)">{{user.id}}</a></th> -->
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </section>
 
-<div class="alert alert-danger" *ngIf="users.length === 0">
-  {{errMsg}}
-</div>
 
-<!-- <ng-template #noUsers>
-  <div class="alert alert-danger">
-  sssss  {{'errorMsg'}}
-  </div>
-</ng-template> -->
+  <ng-template #noUsers>
+    <div class="bg bg-danger text-white p-3 mt-2 bg-danger bg-gradient" *ngIf="users.length === 0">
+      {{errMsg}}
+    </div>
+  </ng-template>
+
+
+
+</main>

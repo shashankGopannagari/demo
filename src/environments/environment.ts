@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  // baseURL = 'http://localhost:3000/';
+  // baseURL : 'http://localhost:3000/' // mockoon
   baseURL : "https://jsonplaceholder.typicode.com/",
   // const url = '../assets/jsons/users.json';
 };

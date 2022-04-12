@@ -30,7 +30,20 @@ export class UserService {
    return this.http.post<User>(`${this.baseURL}users`, user);
  }
 
- 
+
+ updateUser(user: User) : Observable<User>{
+   return this.http.put<User>(`${this.baseURL}users/${user.id}`, user);
+ }
+
+ patchUser(user: any) : Observable<User>{
+  return this.http.patch<User>(`${this.baseURL}users/${user.id}`, user);
+}
+
+
+deleteUser(userId: number) : Observable<unknown>{
+  return this.http.delete<unknown>(`${this.baseURL}users/${userId}`,);
+}
+
 
  errorHandler(error: HttpErrorResponse)  {
    console.log('error===>', error)

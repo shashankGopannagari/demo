@@ -15,7 +15,8 @@ import { ExamplePipe } from './pipes/example.pipe';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeadersInterceptor } from './interceptors/headers.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    
+    {provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi:true },
     // {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
