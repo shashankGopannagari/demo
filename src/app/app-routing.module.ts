@@ -8,6 +8,7 @@ import { AuthChildGuard } from './auth-child.guard';
 import { AuthenticateGuard } from './authenticate.guard';
 import { CanLoadAuthGuard } from './can-load-auth.guard';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FormsComponent } from './forms/forms.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LaptopComponent } from './products/laptop/laptop.component';
@@ -56,6 +57,10 @@ const routes: Routes = [
   canLoad: [CanLoadAuthGuard],
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule) 
   },
+
+  { path: 'forms', 
+    component: FormsComponent
+  },
   
   {
     path: '**',
@@ -79,6 +84,6 @@ export const myComponents = [
   LaptopComponent,
   MobileComponent,
   LocationComponent,
-  FeedbackComponent
-
+  FeedbackComponent,
+  FormsComponent
 ]

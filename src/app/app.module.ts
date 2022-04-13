@@ -17,6 +17,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from './interceptors/headers.interceptor';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HeadersInterceptor } from './interceptors/headers.interceptor';
     // FilterPipe,
     myComponents,
     AccessDeniedComponent,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
