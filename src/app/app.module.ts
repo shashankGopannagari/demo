@@ -12,12 +12,13 @@ import { IfComponent } from './directives/if/if.component';
 import { NgForComponent } from './directives/ng-for/ng-for.component';
 import { PipesComponent } from './pipes/pipes/pipes.component';
 import { ExamplePipe } from './pipes/example.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from './interceptors/headers.interceptor';
 import { FormsComponent } from './forms/forms.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,14 @@ import { FormsComponent } from './forms/forms.component';
     myComponents,
     AccessDeniedComponent,
     FormsComponent,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi:true },

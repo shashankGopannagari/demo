@@ -9,6 +9,7 @@ import { AuthenticateGuard } from './authenticate.guard';
 import { CanLoadAuthGuard } from './can-load-auth.guard';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FormsComponent } from './forms/forms.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LaptopComponent } from './products/laptop/laptop.component';
@@ -60,6 +61,9 @@ const routes: Routes = [
 
   { path: 'forms', 
     component: FormsComponent
+  },
+  { path: 'reactive-forms', 
+    component: ReactiveFormComponent
   },
   
   {

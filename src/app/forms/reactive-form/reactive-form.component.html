@@ -1,0 +1,74 @@
+<main>
+    <form class="row g-3" [formGroup]="registraionForm" (submit)="signIn()">
+
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="fisrtName" formControlName="firstName"
+            [class.is-invalid]="firstName?.touched && firstName?.invalid" minlength="3"  maxlength="10"
+            required >
+            <div *ngIf="firstName?.touched && firstName?.invalid">
+                <small class="text-danger" *ngIf="firstName?.errors?.['required']">First Name is required</small>
+                <small class="text-danger" *ngIf="firstName?.errors?.['minlength']">Minimum 3 characters required</small>
+                <!-- <small class="text-danger" *ngIf="firstName?.errors?.['pattern']">Special characters not allowed</small> -->
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+          </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" name="email" formControlName="email">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" name="password" formControlName="password">
+        </div>
+        <section formGroupName="address" class="row g-3">
+            <h3>Address</h3>
+        <div class="col-md-6 pt-2">
+          <label for="houseNum" class="form-label">H:No</label>
+          <input type="text" class="form-control" id="houseNum" name="houseNum"  formControlName="houseNum"
+          placeholder="1234 Main St" >
+        </div>
+        <div class="col-md-6">
+          <label for="street" class="form-label">Street</label>
+          <input type="text" class="form-control" id="street" name="street"  formControlName="street"
+          placeholder="Apartment, studio, or floor" >
+        </div>
+        <div class="col-md-4">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" id="city" name="city"  formControlName="city" >
+        </div>
+        <div class="col-md-4">
+          <label for="state" class="form-label">State</label>
+          <select id="state" class="form-select" name="state"  formControlName="state">
+            <option selected>Choose...</option>
+            <option value="Telangana">TS</option>
+            <option value="Andhrapradesh">AP</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label for="zip" class="form-label">Zip</label>
+          <input type="number" class="form-control" id="zip" name="zip"  formControlName="zip">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="agree" name="agree"  formControlName="agree">
+            <label class="form-check-label" for="gridCheck">
+              Agree ?
+            </label>
+          </div>
+        </div>
+    </section>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+
+
+<section class="form-value">
+    {{registraionForm?.value | json}}
+</section>
+
+</main>

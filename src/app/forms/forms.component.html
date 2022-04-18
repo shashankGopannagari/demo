@@ -3,19 +3,31 @@
     <div class="row">
         <div class="col-md-6">
             <form #myForm="ngForm">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">First Name </label>
-                    <input type="text" #name="ngModel" class="form-control" id="exampleInputEmail1" name="firstName"
-                    required="true" ngModel>
+                <div class="mb-3 position-relative">
+                    <label for="firstName" class="form-label">First Name </label>
+                    <input type="text" #name="ngModel" class="form-control" id="firstName" 
+                    name="firstName" [class.is-invalid]="name.touched  && name.invalid"
+                    required ngModel>
                     <!-- <div class="form-text text-danger">{{name.className}}</div> -->
-                    <div class="form-text text-dark"> is dirty? {{name.dirty}}</div>
-                    <div class="form-text text-dark">is valid? {{name.valid}}</div>
-                    <div class="form-text text-danger" *ngIf="name.invalid">please give your name</div>
+                    <!-- <div class="form-text text-dark"> is dirty? {{name.dirty}}</div>
+                    <div class="form-text text-dark">is valid? {{name.valid}}</div> -->
+                    <!-- <div class="form-text invalid-tooltip" *ngIf="name.invalid">please give your name</div> -->
+                    <div class="form-text invalid-feedback" *ngIf="name.touched || name.invalid">
+                        Please enter your name</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" ngModel>
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required
+                    #email="ngModel"
+                    [class.is-invalid]="email.touched && email.invalid"
+                       ngModel
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="3">
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    <div class="form-text invalid-feedback" *ngIf="email.errors && (email.touched || email.invalid)">
+                      <p *ngIf="email.errors?.['required']">Please enter your email.</p>
+                      <p *ngIf="email?.errors?.['pattern']">Please enter your email in correct format.</p>
+                      <p *ngIf="email?.errors?.['minlength']">must be 3 characters.</p>
+                    </div>
                 </div>
                
                 <div class="mb-3">
