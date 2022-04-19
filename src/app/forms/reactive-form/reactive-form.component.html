@@ -1,15 +1,18 @@
 <main>
+
+  
     <form class="row g-3" [formGroup]="registraionForm" (submit)="signIn()">
 
         <div class="col-md-6">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" name="fisrtName" formControlName="firstName"
-            [class.is-invalid]="firstName?.touched && firstName?.invalid" minlength="3"  maxlength="10"
+            [class.is-invalid]="getFirstName?.touched && getFirstName?.invalid" minlength="3"  maxlength="10"
             required >
-            <div *ngIf="firstName?.touched && firstName?.invalid">
-                <small class="text-danger" *ngIf="firstName?.errors?.['required']">First Name is required</small>
-                <small class="text-danger" *ngIf="firstName?.errors?.['minlength']">Minimum 3 characters required</small>
-                <!-- <small class="text-danger" *ngIf="firstName?.errors?.['pattern']">Special characters not allowed</small> -->
+            <div *ngIf="getFirstName?.touched && getFirstName?.invalid">
+                <small class="text-danger" *ngIf="getFirstName?.errors?.['required']">First Name is required</small>
+                <small class="text-danger" *ngIf="getFirstName?.errors?.['minlength']">Minimum 3 characters required</small>
+                <small class="text-danger" *ngIf="getFirstName?.errors?.['nameNotAllowed']">
+                  {{getFirstName?.errors?.['nameNotAllowed'].value}} as FirstName is not allowed</small>
             </div>
           </div>
           <div class="col-md-6">
@@ -18,7 +21,9 @@
           </div>
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" name="email" formControlName="email">
+          <input type="email" class="form-control" id="inputEmail4" name="email" formControlName="email"
+          [class.is-invalid]="getEmail?.touched && getEmail?.invalid">
+          <small class="invalid-feedback" *ngIf="getEmail?.errors?.['required']">Email is required</small>
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password</label>
@@ -62,7 +67,7 @@
         </div>
     </section>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary" [disabled]="registraionForm.invalid">Sign in</button>
         </div>
       </form>
 

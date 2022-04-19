@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { userNameValidator } from 'src/app/shared/userNameValidator';
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
@@ -32,7 +32,9 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.registraionForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength]],
+      firstName: ['', [Validators.required, Validators.minLength, userNameValidator(/admin/),
+      userNameValidator(/password/), userNameValidator(/sdf/)]],
+      // firstName: ['', [Validators.required, Validators.minLength, userNameValidator ]],
       lastName: [''],
       email: [''],
       password: [''],
@@ -42,16 +44,22 @@ export class ReactiveFormComponent implements OnInit {
         city: [''],
         state: [''],
         zip: [''],
-        agree: ['']
+        agree: [false]
       })
 
     })
-
+    this.setFormValues()
+    this.setValidatorForEmail();
   }
 
-  get firstName(){
+  get getFirstName() {
     return this.registraionForm.get('firstName');
   }
+
+  get getEmail() {
+    return this.registraionForm.get('email');
+  }
+
 
   signIn() {
     console.table(this.registraionForm?.value);
@@ -59,5 +67,47 @@ export class ReactiveFormComponent implements OnInit {
 
 
 
+  setValidatorForEmail() {
+    this.registraionForm.get('address.agree')?.valueChanges.subscribe((checkedValue: boolean) => {
+      const email = this.registraionForm.get('email');
+      if (checkedValue) {
+        email?.setValidators(Validators.required);
+      }
+      else {
+        email?.clearValidators();
+      }
 
+      email?.updateValueAndValidity();
+    })
+  }
+
+  setFormValues() {
+    // this.registraionForm.setValue({
+    //   firstName: 'James',
+    //   lastName: 'Bond',
+    //   email: 'james@gmail.com',
+    //   password: 'sdsdfsdf',
+    //   address: {
+    //     houseNum: '12-1-10',
+    //     street: 'Main street',
+    //     city: 'New York',
+    //     state: 'Telangana',
+    //     zip: 121212,
+    //     agree: true
+    //   }
+    // })
+
+this.registraionForm.patchValue({
+  firstName: 'James',
+  address: {
+        houseNum: '12-1-10',
+    //     street: 'Main street',
+    //     city: 'New York',
+    //     state: 'Telangana',
+    //     zip: 121212,
+    //     agree: true
+      }
+})
+
+  }
 }
